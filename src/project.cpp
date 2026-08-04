@@ -125,6 +125,7 @@ double calculateBalance(TransactionNode* head) {
 
 // ----- Sorting -----
 void sortTransactionsByAmount(TransactionNode* head) {
+    // Sorts the transactions based on their amount.
     if(head == nullptr || head->next == nullptr) {
         return;
     }
@@ -152,6 +153,7 @@ void sortTransactionsByAmount(TransactionNode* head) {
 
 // ----- File I/O -----
 int loadTransactions(string filename, TransactionNode*& head) {
+    // Loads transaction records from a file and adds them to the linked list.
     ifstream input(filename);
 
     if(!input.is_open()) {
