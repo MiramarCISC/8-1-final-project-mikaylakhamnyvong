@@ -5,9 +5,128 @@
 
 using namespace std;
 
+// ----- Input Validation -----
+bool isValidAmount(double amount) {
+    // Checks if the amount is a valid amount.
+    return amount >= 0;
+}
+
+bool isValidChoice(int choice) {
+    // Checks if the choice is a valid choice.
+    return choice >= 1 && choice <= 9;
+}
+
+// ----- Linked List -----
+void addTransaction(TransactionNode*& head, Transaction transaction) {
+    // Creates a new transaction node and adds it to the end of the linked list.
+    TransactionNode* newNode = new TransactionNode;
+
+    newNode->data = transaction;
+    newNode->next = nullptr;
+
+    if(head == nullptr) {
+        head = newNode;
+    }
+    else {
+        TransactionNode* current = head;
+
+        while(current-> next != nullptr) {
+            current = current->next;
+        }
+
+        current->next = newNode;
+    }
+}
+
+void displayTransactions(TransactionNode* head) {
+    // Displays all transactions in the linked list.
+    if(head == nullptr) {
+        cout << "\nNo Transactions found.\n";
+        return;
+    }
+
+    TransactionNode* current = head;
+    while(current != nullptr) {
+        cout << "\n--------------------------\n";
+        cout << "Transaction ID: " << current->data.id << endl;
+        cout << "Category: " << current->data.category << endl;
+        cout << "Description: " << current->data.description << endl;
+        cout << "Amount: $" << fixed << setprecision(2)
+             << current->data.amount << endl;
+        cout << "Type: "
+             << (current->data.isIncome ? "Income" : "Expense")
+             << endl;
+        
+             current = current->next;
+    }
+
+    cout << "--------------------------\n";
+}
+
+TransactionNode* searchTransaction(TransactionNode* head, int id) {
+    // Searches the linked list for a transaction with the given ID.
+    TransactionNode* current = head;
+
+    while(current != nullptr) {
+        if(current->data.id == id) {
+            return current;
+        }
+
+        current = current->next;
+    }
+
+    return nullptr;
+}
+
+void clearTransaction(TransactionNode*& head) {
+    // Deletes every node in the linked lists and frees allocated memory.
+    while(head != nullptr) {
+        TransactionNode* temp = head;
+        head = head->next;
+        delete temp;
+    }
+}
+
+// ----- Calculations -----
+double calculateIncome(TransactionNode* head) {
+    // Calculates total income transactions.
+    double total = 0;
+    
+    while(head != nullptr) {
+        if(head->data.isIncome) {
+            total += head->data.amount;
+        }
+
+        head = head->next;
+    }
+
+    return total;
+}
+
+double calculateExpenses(TransactionNode* head) {
+    // Calculates total expense transactions.
+    double total = 0;
+
+    while(head != nullptr) {
+        if(!head->data.isIncome) {
+            total += head->data.amount;
+        }
+
+        head = head->next;
+    }
+
+    return total;
+}
+
+double calculateBalance(TransactionNode* head) {
+    // Calculates current balance.
+    return calculateIncome(head) - calculateBalance(head);
+}
+
 // ----- Menu -----
 void printMenu() {
-    cout << "----- Budget Tracker -----\n";
+    // Displays menu options for the budget tracker.
+    cout << "\n----- Budget Tracker -----\n";
     cout << "1. Load Transactions\n";
     cout << "2. Add Transaction\n";
     cout << "3. View Transactions\n";
@@ -20,5 +139,3 @@ void printMenu() {
     cout << "--------------------------\n";
     cout << "Enter your choice: ";
 }
-
-
