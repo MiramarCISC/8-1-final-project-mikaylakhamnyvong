@@ -63,7 +63,6 @@ make clean
 7. Week 7 File I/O and Integration
    - Code location: `loadTransactions()` in `src/project.cpp` and `budget.txt` in `data/budget.txt`
    - Test location:
-```
 
 ## Known Limitations
 - You can set multiple transactions to the same ID number, making it difficult to search for.
