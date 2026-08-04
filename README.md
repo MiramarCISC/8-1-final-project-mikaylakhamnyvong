@@ -38,31 +38,31 @@ make clean
 
 1. Week 1 Program Basics
    - Code location: `calculateIncome()`, `calculateExpenses()`, `calculateBalance()` in `src/project.cpp`
-   - Test location:
+   - Test location: `testWeek1ProgramBasics()` in `tests/test_project.cpp`
 
 2. Week 2 Decisions and Loops
    - Code location: menu loop and switch statement in `src/main.cpp`, `isValidChoice()` in `src/project.cpp`
-   - Test location:
+   - Test location: `testWeek2DecisionsAndLoops()` in `tests/test_project.cpp`
 
 3. Week 3 Functions and Program Design
    - Code location: function declarations in `include/project.hpp`, function implementations in `src/project.cpp`
-   - Test location:
+   - Test location: `testWeek3FunctionsAndProgramDesign()` in `tests/test_project.cpp`
 
 4. Week 4 Arrays, Searching, and Sorting
    - Code location: `sortTransactionByAmount()` and `searchTransaction()` in `src/project.cpp`
-   - Test location:
+   - Test location: `testWeek4ArraysSearchingSorting()` in `tests/test_project.cpp`
 
 5. Week 5 Strings and Structures
    - Code location: Transaction and TransactionNode structures in `include/project.hpp`
-   - Test location:
+   - Test location: `testWeek5StringsAndStructures()` in `tests/test_project.cpp`
 
 6. Week 6 Pointers, Dynamic Memory, and Linked Lists
    - Code location: `addTransaction()`, `clearTransaction()`, and linked list operations in `src/project.cpp`
-   - Test location:
+   - Test location: `testWeek6SimpleLinkedList()` in `tests/test_project.cpp`
 
 7. Week 7 File I/O and Integration
    - Code location: `loadTransactions()` in `src/project.cpp` and `budget.txt` in `data/budget.txt`
-   - Test location:
+   - Test location: `testWeek7FileIO())` in `tests/test_project.cpp`
 
 ## Known Limitations
 - You can set multiple transactions to the same ID number, making it difficult to search for.
@@ -77,5 +77,5 @@ make clean
 - [x] My project integrates all 7 course topics in reachable code.
 - [ ] My project includes at least one unit test per course topic.
 - [x] My README explains where each topic appears.
-- [ ] My README explains which test verifies each topic.
+- [x] My README explains which test verifies each topic.
 - [ ] My code is committed and pushed to GitHub Classroom.
