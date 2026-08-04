@@ -139,7 +139,7 @@ void sortTransactionsByAmount(TransactionNode* head) {
             if(current->data.amount > current->next->data.amount) {
                 Transaction temp = current->data;
                 current->data = current->next->data;
-                curent->next->data = temp;
+                current->next->data = temp;
 
                 swapped = true;
             }
