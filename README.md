@@ -37,31 +37,31 @@ make clean
 ## Integrate and Test Course Topics
 
 1. Week 1 Program Basics
-   - Code location: ```bash calculateIncome(), calculateExpenses(), calculateBalance()``` in src/project.cpp
+   - Code location: `calculateIncome()`, `calculateExpenses()`, `calculateBalance()` in `src/project.cpp`
    - Test location:
 
 2. Week 2 Decisions and Loops
-   - Code location: menu loop and switch statement in src/main.cpp, isValidChoice() in src/project.cpp
+   - Code location: menu loop and switch statement in `src/main.cpp`, `isValidChoice()` in `src/project.cpp`
    - Test location:
 
 3. Week 3 Functions and Program Design
-   - Code location: function declarations in include/project.hpp, function implementations in src/project.cpp
+   - Code location: function declarations in `include/project.hpp`, function implementations in `src/project.cpp`
    - Test location:
 
 4. Week 4 Arrays, Searching, and Sorting
-   - Code location: sortTransactionByAmount() and searchTransaction() in src/project.cpp
+   - Code location: `sortTransactionByAmount()` and `searchTransaction()` in `src/project.cpp`
    - Test location:
 
 5. Week 5 Strings and Structures
-   - Code location: Transaction and TransactionNode structures in include/project.hpp
+   - Code location: Transaction and TransactionNode structures in `include/project.hpp`
    - Test location:
 
 6. Week 6 Pointers, Dynamic Memory, and Linked Lists
-   - Code location: addTransaction(), clearTransaction(), and linked list operations in src/project.cpp
+   - Code location: `addTransaction()`, `clearTransaction()`, and linked list operations in `src/project.cpp`
    - Test location:
 
 7. Week 7 File I/O and Integration
-   - Code location: loadTransactions() in src/project.cpp and data/budget.txt
+   - Code location: `loadTransactions()` in `src/project.cpp` and `budget.txt` in `data/budget.txt`
    - Test location:
 ```
 
