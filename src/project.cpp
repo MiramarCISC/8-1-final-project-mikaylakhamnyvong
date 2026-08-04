@@ -120,7 +120,7 @@ double calculateExpenses(TransactionNode* head) {
 
 double calculateBalance(TransactionNode* head) {
     // Calculates current balance.
-    return calculateIncome(head) - calculateBalance(head);
+    return calculateIncome(head) - calculateExpenses(head);
 }
 
 // ----- Sorting -----

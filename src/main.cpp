@@ -21,9 +21,9 @@ int main() {
             case 1: {
                 int loaded = loadTransactions("data/budget.txt", head);
 
-                cout << "Loaded "
+                cout << "\nLoaded "
                      << loaded
-                     << "transactions.\n";
+                     << " transactions.\n";
                 break;
             }
 

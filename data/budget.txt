@@ -1,0 +1,8 @@
+1 Food Lunch 15.50 0
+2 Salary paycheck 1500.00 1
+3 Gas Fuel 45.25 0
+4 Entertainment Movie 18.00 0
+5 Freelance Project 350.00 1
+6 Grocery Ralphs 102.34 0
+7 Rent Apartment 850.00 0
+8 Bonus Work 200.00 1
