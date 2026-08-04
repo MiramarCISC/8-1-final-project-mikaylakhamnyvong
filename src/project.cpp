@@ -123,6 +123,57 @@ double calculateBalance(TransactionNode* head) {
     return calculateIncome(head) - calculateBalance(head);
 }
 
+// ----- Sorting -----
+void sortTransactionsByAmount(TransactionNode* head) {
+    if(head == nullptr || head->next == nullptr) {
+        return;
+    }
+
+    bool swapped;
+
+    do {
+        swapped = false;
+        TransactionNode* current = head;
+
+        while(current->next != nullptr) {
+            if(current->data.amount > current->next->data.amount) {
+                Transaction temp = current->data;
+                current->data = current->next->data;
+                curent->next->data = temp;
+
+                swapped = true;
+            }
+
+            current = current->next;
+        }
+    }
+    while (swapped);
+}
+
+// ----- File I/O -----
+int loadTransactions(string filename, TransactionNode*& head) {
+    ifstream input(filename);
+
+    if(!input.is_open()) {
+        return 0;
+    }
+
+    int count = 0;
+    Transaction transaction;
+
+    while(input >> transaction.id
+                >> transaction.category
+                >> transaction.description
+                >> transaction.amount
+                >> transaction.isIncome) {
+        addTransaction(head, transaction);
+        count++;
+    }
+
+    input.close();
+    return count;
+}
+
 // ----- Menu -----
 void printMenu() {
     // Displays menu options for the budget tracker.
