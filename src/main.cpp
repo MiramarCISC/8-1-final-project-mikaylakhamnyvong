@@ -131,6 +131,7 @@ int main() {
         }
     } 
     while(choice != 9);
+    cout << "\nGoodbye!" << endl;
 
     clearTransaction(head);
 

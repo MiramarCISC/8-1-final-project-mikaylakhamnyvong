@@ -126,12 +126,12 @@ Before submitting your final project, update this README.md so it describes your
 
 ## Final Submission Checklist
 
-- [ ] My project compiles with `make`.
-- [ ] My project runs with `./main`.
+- [x] My project compiles with `make`.
+- [x] My project runs with `./main`.
 - [ ] My tests run with `make test`.
-- [ ] I deleted or replaced the sample project code.
-- [ ] My project uses class names that are nouns from my own project.
-- [ ] My project integrates all 7 course topics in reachable code.
+- [x] I deleted or replaced the sample project code.
+- [x] My project uses class names that are nouns from my own project.
+- [x] My project integrates all 7 course topics in reachable code.
 - [ ] My project includes at least one unit test per course topic.
 - [ ] My README explains where each topic appears.
 - [ ] My README explains which test verifies each topic.
