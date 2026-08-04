@@ -6,7 +6,7 @@
 
 using namespace std;
 
-// Stores one record in the budget tracker.
+// Stores one record in the budget tracker
 struct Transaction {
     int id;
     string category;
@@ -15,7 +15,7 @@ struct Transaction {
     bool isIncome;
 };
 
-// Creates a linked list.
+// Creates a linked list
 struct TransactionNode {
     Transaction data;
     TransactionNode* next;
