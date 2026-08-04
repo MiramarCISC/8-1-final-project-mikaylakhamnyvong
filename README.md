@@ -37,7 +37,7 @@ make clean
 ## Integrate and Test Course Topics
 
 1. Week 1 Program Basics
-   - Code location: calculateIncome(), calculateExpenses(), calculateBalance() in src/project.cpp
+   - Code location: ```bash calculateIncome(), calculateExpenses(), calculateBalance()``` in src/project.cpp
    - Test location:
 
 2. Week 2 Decisions and Loops
