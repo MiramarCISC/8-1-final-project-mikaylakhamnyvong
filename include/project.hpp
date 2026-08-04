@@ -3,127 +3,44 @@
 
 #include <string>
 
-const double A_MINIMUM = 90.0;
-const double B_MINIMUM = 80.0;
-const double C_MINIMUM = 70.0;
-const double D_MINIMUM = 60.0;
-const int MAX_INVENTORY_ITEMS = 100;
+using namespace std;
 
-// SAMPLE CODE ONLY:
-// These classes demonstrate course concepts using sample project nouns.
-// Delete or replace these sample classes before final submission.
+const int MIN_PRIORITY = 1;
+const int MAX_PRIORITY = 5;
+const int MAX_TASKS = 100;
 
-class ScoreList {
-private:
-    double scores[10];
-    int count;
-
-public:
-    ScoreList();
-
-    bool addScore(double score);
-    int getCount() const;
-    double getScoreAt(int index) const;
-
-    double getTotal() const;
-    double getAverage() const;
-    int findScore(double target) const;
-    void sortAscending();
-
-    static bool isValidScore(double score);
-};
-
-class Student {
-private:
-    std::string id;
-    std::string name;
-    ScoreList scoreList;
-
-public:
-    Student();
-    Student(std::string studentId, std::string studentName);
-
-    std::string getId() const;
-    std::string getName() const;
-    ScoreList& getScoreList();
-    const ScoreList& getScoreList() const;
-
-    double getAverage() const;
-    char getLetterGrade() const;
-
-    static bool isValidId(std::string id);
-    static char determineLetterGrade(double average);
-};
-
-class Task {
-private:
-    std::string description;
+struct Task {
+    int id;
+    string description;
     int priority;
+    string dueDate;
     bool completed;
-
-public:
-    Task();
-    Task(std::string taskDescription, int taskPriority);
-
-    std::string getDescription() const;
-    int getPriority() const;
-    bool isCompleted() const;
-    void markComplete();
-
-    static bool isValidPriority(int priority);
 };
 
-class TaskNode {
-public:
+struct TaskNode {
     Task data;
     TaskNode* next;
-
-    TaskNode(Task task);
 };
 
-class TaskList {
-private:
-    TaskNode* head;
+bool isValidPriority(int priority);
+bool isValidDescription(const string& description);
 
-public:
-    TaskList();
-    TaskList(const TaskList& other) = delete;
-    TaskList& operator=(const TaskList& other) = delete;
-    ~TaskList();
+double calculateAvgPriority(const Task tasks[], int count);
+int countCompletedTasks(const Task tasks[], int count);
 
-    void insertFront(Task task);
-    int countTasks() const;
-    TaskNode* findTask(std::string description);
-    const TaskNode* findTask(std::string description) const;
-    bool markTaskComplete(std::string description);
-    int removeCompletedTasks();
-    void clear();
-    bool isEmpty() const;
-};
+void insertTask(TaskNode*& head, Task task);
+bool removeTaskById(TaskNode*& head, int id);
+TaskNode* findTasks(TaskNode* head, const string& description);
+int countTasks(TaskNode* head);
+void clearTasks(TaskNode*& head);
 
-struct InventoryItem {
-    std::string sku;
-    std::string name;
-    int quantity;
-    double price;
-};
+int taskListToArr(TaskNode* head, Task arr[], int maxSize);
+void sortTasks(Task arr[], int count);
+int findTaskIndex(const Task arr[], int count, int id);
 
-class InventoryReport {
-public:
-    static bool isValidQuantity(int quantity);
-    static bool isValidPrice(double price);
-    static double calculateItemValue(const InventoryItem& item);
+int loadTasks(const string& filename, TaskNode*& head);
+bool saveTasks(const string& filename, TaskNode* head);
 
-    static int readInventoryFile(std::string filename, InventoryItem items[], int maxItems);
-    static bool writeInventoryReport(std::string filename, const InventoryItem items[], int count);
-
-    static double calculateTotalInventoryValue(const InventoryItem items[], int count);
-    static int findItemBySku(const InventoryItem items[], int count, std::string sku);
-    static int findHighestValueItemIndex(const InventoryItem items[], int count);
-};
-
-bool isValidMenuChoice(int choice);
 void printMenu();
-void printStudent(const Student& student);
 
 #endif
