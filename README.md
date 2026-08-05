@@ -71,11 +71,11 @@ make clean
 
 - [x] My project compiles with `make`.
 - [x] My project runs with `./main`.
-- [ ] My tests run with `make test`.
+- [x] My tests run with `make test`.
 - [x] I deleted or replaced the sample project code.
 - [x] My project uses class names that are nouns from my own project.
 - [x] My project integrates all 7 course topics in reachable code.
-- [ ] My project includes at least one unit test per course topic.
+- [x] My project includes at least one unit test per course topic.
 - [x] My README explains where each topic appears.
 - [x] My README explains which test verifies each topic.
-- [ ] My code is committed and pushed to GitHub Classroom.
+- [x] My code is committed and pushed to GitHub Classroom.
