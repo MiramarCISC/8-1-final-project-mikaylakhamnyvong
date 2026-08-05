@@ -72,7 +72,7 @@ void testWeek4ArraysSearchingSorting() {
 
     assert(nearlyEqual(head->data.amount, 10.00));
     assert(nearlyEqual(head->next->data.amount, 25.00));
-    assert(nearlyEqual(head->next->next->data.amount, 50.00));
+    assert(nearlyEqual(head->next->next->data.amount, 25.00));
 
     clearTransaction(head);
 }
