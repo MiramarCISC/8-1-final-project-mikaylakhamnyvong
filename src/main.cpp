@@ -4,92 +4,136 @@
 using namespace std;
 
 int main() {
-    int choice = -1;
 
-    cout << "CISC 192 Final Project Sample" << endl;
-    cout << "Sample code is provided only as an example." << endl;
-    cout << "Delete or replace the sample code before final submission." << endl;
+    TransactionNode* head = nullptr;
+    int choice;
 
     do {
         printMenu();
         cin >> choice;
 
-        while (!isValidMenuChoice(choice)) {
-            cout << "Invalid choice. Enter 0-4: ";
-            cin >> choice;
+        if(!isValidChoice(choice)) {
+            cout << "\nInvalid menu choice.\n";
+            continue;
         }
 
-        switch (choice) {
+        switch(choice) {
             case 1: {
-                Student student("A123", "Alex");
-                student.getScoreList().addScore(90.0);
-                student.getScoreList().addScore(80.0);
-                student.getScoreList().addScore(100.0);
-                student.getScoreList().sortAscending();
+                int loaded = loadTransactions("data/budget.txt", head);
 
-                printStudent(student);
-                cout << "Score 100 found at index "
-                     << student.getScoreList().findScore(100.0)
-                     << endl;
-
+                cout << "\nLoaded "
+                     << loaded
+                     << " transactions.\n";
                 break;
             }
 
             case 2: {
-                TaskList tasks;
-                tasks.insertFront(Task("study", 5));
-                tasks.insertFront(Task("project", 4));
-                tasks.markTaskComplete("study");
+                Transaction transaction;
 
-                cout << "Task count: " << tasks.countTasks() << endl;
-                cout << "Removed completed tasks: "
-                     << tasks.removeCompletedTasks()
-                     << endl;
-                cout << "Remaining task count: " << tasks.countTasks() << endl;
+                cout << "Transaction ID: ";
+                cin >> transaction.id;
+
+                cout << "Category: ";
+                cin >> transaction.category;
+
+                cout << "Description: ";
+                cin >> transaction.description;
+
+                cout << "Amount: ";
+                cin >> transaction.amount;
+
+                if(!isValidAmount(transaction.amount)) {
+                    cout << "\nAmount must be positive.\n";
+                    break;
+                }
+
+                int type;
+
+                cout << "(1) Income or (2) Expense: ";
+                cin >> type;
+
+                transaction.isIncome = (type == 1);
+                addTransaction(head, transaction);
+
+                cout << "\nTransaction added successfully.\n";
 
                 break;
             }
 
             case 3: {
-                InventoryItem items[MAX_INVENTORY_ITEMS];
-                int count = InventoryReport::readInventoryFile(
-                    "data/inventory.txt",
-                    items,
-                    MAX_INVENTORY_ITEMS
-                );
+                displayTransactions(head);
+                break;
+            }
 
-                cout << "Read " << count << " inventory item(s)." << endl;
-                cout << "Total inventory value: "
-                     << InventoryReport::calculateTotalInventoryValue(items, count)
-                     << endl;
+            case 4: {
+                int id;
 
-                if (InventoryReport::writeInventoryReport(
-                        "inventory_report.txt",
-                        items,
-                        count
-                    )) {
-                    cout << "Report written to inventory_report.txt" << endl;
+                cout << "\nEnter transaction ID: ";
+                cin >> id;
+
+                TransactionNode* found = searchTransaction(head, id);
+
+                if(found == nullptr) {
+                    cout << "Transaction not found.\n";
+                }
+                else {
+                    cout << "\nTransaction Found\n";
+                    cout << "ID: "
+                         << found->data.id
+                         << endl;
+
+                    cout << "Category: "
+                         << found->data.category
+                         << endl;
+
+                    cout << "Description: "
+                         << found->data.description
+                         << endl;
+
+                    cout << "Amount: $"
+                         << found->data.amount
+                         << endl;
+
+                    cout << "Type: "
+                         << (found->data.isIncome ? "Income" : "Expense")
+                         << endl;
                 }
 
                 break;
             }
 
-            case 4:
-                cout << "Use this sample only as an example. "
-                     << "Delete or replace sample code before submission."
+            case 5: {
+                sortTransactionsByAmount(head);
+                cout << "\nTransactions sorted by amount.\n";
+                break;
+            }
+
+            case 6: {
+                cout << "\nTotal Income: $"
+                     << calculateIncome(head)
                      << endl;
                 break;
+            }
 
-            case 0:
-                cout << "Goodbye!" << endl;
+            case 7: {
+                cout << "\nTotal Expenses: $"
+                     << calculateExpenses(head)
+                     << endl;
                 break;
+            }
 
-            default:
-                cout << "Unexpected choice." << endl;
+            case 8: {
+                cout << "\nCurrent Balance: $"
+                     << calculateBalance(head)
+                     << endl;
                 break;
+            }
         }
+    } 
+    while(choice != 9);
+    cout << "\nGoodbye!" << endl;
 
-    } while (choice != 0);
+    clearTransaction(head);
 
     return 0;
 }
